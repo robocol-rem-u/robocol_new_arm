@@ -1,0 +1,12 @@
+ controller_list:
+  - name: position_joint_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - robocol_joint1
+      - robocol_joint2
+      - robocol_joint3
+      - robocol_joint4
+      - robocol_joint5
+      - robocol_joint6

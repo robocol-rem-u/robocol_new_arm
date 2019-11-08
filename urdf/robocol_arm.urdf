@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+<robot name="robocol" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- LINKS -->
+  
+  <link name="robocol_link0">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link0.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="black_metal">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint1" type="revolute">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" /> -->
+    <origin xyz="0 0 1.4" rpy="0 0 0" />
+    <parent link="robocol_link0"/>
+    <child link="robocol_link1"/>
+    <axis xyz="0 0 1" />
+    <limit effort="87" lower="-3" upper="3" velocity="2.3925" />
+  </joint>
+
+  <link name="robocol_link1">
+    <visual>
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link1.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint2" type="revolute">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-1.7628" soft_upper_limit="1.7628" /> -->
+    <parent link="robocol_link1"/>
+    <child link="robocol_link2"/>
+    <origin xyz="0.74 -0.55 1.2" rpy="0 -1.57 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="87" lower="-3" upper="3" velocity="2.3925" />
+  </joint>
+
+  <link name="robocol_link2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link2.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint3" type="revolute">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" /> -->
+    <parent link="robocol_link2"/>
+    <child link="robocol_link3"/>
+    <origin xyz="2.5 0 0" rpy="0 1.57 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="87" lower="-3" upper="3" velocity="2.3925" />
+  </joint>
+
+  <link name="robocol_link3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link3.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint4" type="revolute">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="0.175" /> -->
+    <parent link="robocol_link3"/>
+    <child link="robocol_link4"/>
+    <!-- <origin xyz="-0.05 0.55 1.35175" rpy="0 0 -1.57" /> -->
+    <origin xyz="-0.05 0.55 1.5" rpy="0 0 -1.57" />
+    <axis xyz="0 0 1" />
+    <limit effort="87" lower="-3" upper="3" velocity="2.3925" />
+  </joint>
+
+  <link name="robocol_link4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link4.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="purple">
+        <color rgba="1 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint5" type="revolute">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" /> -->
+    <parent link="robocol_link4"/>
+    <child link="robocol_link5"/>
+    <origin xyz="0.42 0.04 1.53" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit effort="12" lower="-3" upper="3" velocity="2.8710" />
+  </joint>
+
+  <link name="robocol_link5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link5.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robocol_joint6" type="revolute">
+    <origin xyz="-0.27 0.14 1.41" rpy="0 0 0" />
+    <parent link="robocol_link5" />
+    <child link="robocol_hand" />
+    <axis xyz="0 0 1" />
+    <limit effort="12" lower="-3" upper="3" velocity="2.8710" />
+  </joint>
+  
+  <!-- <link name="robocol_link6" />
+16.6837
+  <joint name="panda_hand_joint" type="fixed">
+    <parent link="robocol_link6" />
+    <child link="robocol_hand" />
+    <origin rpy="0 1.57 0" xyz="-0.4 0.2 1.8" />
+  </joint> -->
+
+  <link name="robocol_hand">
+    <visual>
+      <geometry>
+        <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/hand.stl" scale="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <!-- <collision>
+        <geometry>
+            <mesh filename="package://moveit_resources/panda_description/meshes/collision/hand.stl" />
+        </geometry>
+    </collision> -->
+  </link>
+  <!-- <link name="robocol_leftfinger" /> -->
+  <!-- <link name="robocol_rightfinger" /> -->
+  <!-- <joint name="robocol_hand_joint" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="0.0175" />
+    <parent link="robocol_link5"/>
+    <child link="robocol_hand"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+  </joint> -->
+  <!-- <joint name="robocol_finger_joint1" type="prismatic">
+      <parent link="robocol_hand"/>
+      <child link="robocol_leftfinger"/>
+      <origin xyz="0 0 0.0584" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+    </joint>
+    <joint name="robocol_finger_joint2" type="prismatic">
+      <parent link="robocol_hand"/>
+      <child link="robocol_rightfinger"/>
+      <origin xyz="0 0 0.0584" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+      <mimic joint="robocol_finger_joint1" />
+    </joint> -->
+
+</robot>
