@@ -7,9 +7,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link0.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link0.stl" /> -->
-         <!-- scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link0.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="black_metal">
         <color rgba="0.1 0.1 0.1 1"/>
@@ -30,8 +27,6 @@
     <visual>
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link1.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link1.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link1.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="red">
         <color rgba="1 0 0 1"/>
@@ -53,8 +48,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link2.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link2.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link2.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="blue">
         <color rgba="0 0 1 1"/>
@@ -76,8 +69,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link3.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link3.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link3.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="green">
         <color rgba="0 1 0 1"/>
@@ -100,8 +91,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link4.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link4.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link4.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="purple">
         <color rgba="1 0 1 1"/>
@@ -123,8 +112,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/link5.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)link5.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/link5.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
       <material name="yellow">
         <color rgba="1 1 0 1"/>
@@ -140,20 +127,10 @@
     <limit effort="12" lower="-3" upper="3" velocity="2.8710" />
   </joint>
   
-  <!-- <link name="robocol_link6" />
-16.6837
-  <joint name="panda_hand_joint" type="fixed">
-    <parent link="robocol_link6" />
-    <child link="robocol_hand" />
-    <origin rpy="0 1.57 0" xyz="-0.4 0.2 1.8" />
-  </joint> -->
-
   <link name="robocol_hand">
     <visual>
       <geometry>
       	<mesh filename="package://robocol_new_arm/meshes/visual/hand.stl" scale="0.1 0.1 0.1"/>
-        <!-- <mesh filename="file://$(arg meshDirectory)hand.stl" scale="0.1 0.1 0.1"/> -->
-        <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/hand.stl" scale="0.1 0.1 0.1"/> -->
       </geometry>
     </visual>
     <!-- <collision>
