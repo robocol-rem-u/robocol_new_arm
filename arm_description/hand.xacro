@@ -11,7 +11,8 @@
     <link name="${ns}_hand">
       <visual>
         <geometry>
-          <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/garra.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="file://$(arg robocol_new_arm)/meshes/visual/garra.stl" scale="0.01 0.01 0.01"/>
+          <!-- <mesh filename="file:///home/franz/catkin_ws/src/robocol_new_arm/meshes/visual/garra.stl" scale="0.01 0.01 0.01"/> -->
           <!-- <mesh filename="package://franka_description/meshes/visual/hand.dae"/> -->
         </geometry>
       </visual>
