@@ -2,8 +2,13 @@ cmake_minimum_required(VERSION 2.8.3)
 project(robocol_new_arm)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
+find_package(Eigen3 REQUIRED)
+
+if(NOT EIGEN3_INCLUDE_DIRS)
+  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
+endif()
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -11,39 +16,23 @@ find_package(catkin REQUIRED COMPONENTS
 	roscpp
 	rospy
 	std_msgs
-	interactive_markers
-	moveit_core
-	moveit_visual_tools
-	moveit_ros_planning
-	moveit_ros_planning_interface
-	moveit_ros_perception
-	pluginlib
-	geometric_shapes
-	pcl_ros
-	pcl_conversions
-	rosbag
-	tf2_ros
-	tf2_eigen
-	tf2_geometry_msgs
 )
 
-find_package(Eigen3 REQUIRED)
-find_package(Boost REQUIRED system filesystem date_time thread)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-catkin_package(
-  LIBRARIES
-  INCLUDE_DIRS
-  CATKIN_DEPENDS
-    moveit_core
-    moveit_visual_tools
-    moveit_ros_planning_interface
-    interactive_markers
-    tf2_geometry_msgs
-  DEPENDS
-    EIGEN3
-)
+# catkin_package(
+#   LIBRARIES
+#   INCLUDE_DIRS
+#   CATKIN_DEPENDS
+#     moveit_core
+#     moveit_visual_tools
+#     moveit_ros_planning_interface
+#     interactive_markers
+#     tf2_geometry_msgs
+#   DEPENDS
+#     EIGEN3
+# )
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -143,11 +132,11 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(
-# # include
-#   ${catkin_INCLUDE_DIRS}
-# )
-include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
+include_directories(
+include
+  ${catkin_INCLUDE_DIRS}
+)
+# include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
 
 # add_subdirectory(doc/kinematics)
 # add_subdirectory(doc/robot_model_and_robot_state)
@@ -241,3 +230,9 @@ include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(inverseKinem src/inverseKinem.cpp)
+target_link_libraries(inverseKinem ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+install(TARGETS inverseKinem DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
