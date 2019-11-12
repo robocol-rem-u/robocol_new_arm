@@ -13,7 +13,7 @@
        
        default_planner_request_adapters/AddTimeParameterization"
        />
-  <arg name="start_state_max_bounds_error" value="0.1" />
+  <arg name="start_state_max_bounds_error" value="0.5" />
   
   <!-- default_planner_request_adapters/ResolveConstraintFrames -->
   
