@@ -24,16 +24,28 @@ actual_J0 = 0.0
 actual_J1 = 0.0
 actual_J2 = 0.0
 actual_J3 = 0.0
+actual_J4 = 0.0
 actual_J5 = 0.0
+
+pasado_J0 = 0.0
+pasado_J1 = 0.0
+pasado_J2 = 0.0
+pasado_J3 = 0.0
+pasado_J4 = 0.0
+pasado_J5 = 0.0
+
+#d = 
 
 def pots_Callback(param):
     global pots_present
-    global actual_J0,actual_J1,actual_J2,actual_J3,actual_J5
+    global actual_J0,actual_J1,actual_J2,actual_J3,actual_J4,actual_J5
+    print("1111")
     pots_present=param.J0
     actual_J0 = param.J0
     actual_J1 = param.J1
     actual_J2 = param.J2
     actual_J3 = param.J3
+    actual_J4 = param.J4
     actual_J5 = param.J5
 
 def changeDir(j,v,n):
@@ -65,7 +77,7 @@ def move_arm():
     global j0,j1,j2,j3,j4,j5,j6
     global v0,v1,v2,v3,v4,v5,v6
     global pots_present
-    global actual_J0,actual_J1,actual_J2,actual_J3,actual_J5
+    global actual_J0,actual_J1,actual_J2,actual_J3,actual_J4,actual_J5
     pub = rospy.Publisher('joint_states', JointState, queue_size=10)
     
     rospy.Subscriber ('topic_pots', pots, pots_Callback)
@@ -80,22 +92,26 @@ def move_arm():
       hello_str.name = ['robocol_joint1','robocol_joint2','robocol_joint3','robocol_joint4','robocol_joint5','robocol_joint6']
       #hello_str.position = [j1,j2,j3,j4,j5,j6]
       actual_J0 = -0.2436*actual_J0+834.71
-      actual_J1 = 0.4007*actual_J1-1432.4
-      actual_J2 =  -0.3782*actual_J2+862.18
-      actual_J3 =  -0.3614*actual_J3+1282.8
+      actual_J1 =  0.5*actual_J1-1735
+      actual_J2 = -0.3862*actual_J2+880.6866
+      actual_J3 =  -0.3585*actual_J3+709.9601
+      actual_J4 =  -0.3629*actual_J4+802.7419
       actual_J5 =  0.3719*actual_J5-873.97
-      actual_J0 = round((actual_J0*(3.1416))/180,2)
-      actual_J1 = round((actual_J1*(3.1416))/180,2)
-      actual_J2 = round((actual_J2*(3.1416))/180,2)
-      actual_J2 = round((actual_J3*(3.1416))/180,2)
-      actual_J5 = round((actual_J5*(3.1416))/180,2)
+      actual_J0 = round((actual_J0*(3.1416))/180,4)
+      actual_J1 = round((actual_J1*(3.1416))/180,4)
+      actual_J2 = round((actual_J2*(3.1416))/180,4)
+      actual_J3 = round((actual_J3*(3.1416))/180,4)
+      actual_J4 = round((actual_J4*(3.1416))/180,4)
+      actual_J5 = round((actual_J5*(3.1416))/180,4)
       print('J0: ',actual_J0)
       print('J1: ',actual_J1)
       print('J2: ',actual_J2)
       print('J3: ',actual_J3)
+      print('J4: ',actual_J4)
       print('J5: ',actual_J5)
       print(' ')
-      hello_str.position = [0,1,2,1,2,actual_J5]
+      #hello_str.position = [actual_J0,actual_J1,actual_J2,actual_J3,2,actual_J5]
+      hello_str.position = [actual_J0,actual_J1,actual_J2,actual_J3,actual_J4,actual_J5]
       #hello_str.position = [actual_J0,actual_J1,actual_J2,actual_J3,j4,actual_J5]
       hello_str.velocity = [0,0,0,0,0,0]
       hello_str.effort = [0,0,0,0,0,0]
