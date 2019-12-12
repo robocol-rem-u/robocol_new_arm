@@ -1,23 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
 from master_msgs.msg import traction_Orders, connection, arm_Orders, rpm, current,pots,sensibility
 import rospy
-
-j0 = 0.0
-j1 = 0.0
-j2 = 0.0
-j3 = 0.0
-j4 = 0.0
-j5 = 0.0
-j6 = 0.0
-v0 = 0.1
-v1 = 0.1
-v2 = 0.1
-v3 = 0.1
-v4 = 0.1
-v5 = 0.1
-v6 = 0.1
 
 pots_present = pots()
 actual_J0 = 0.0
@@ -37,6 +22,11 @@ pasados_J5 = 0.0
 iw = 0
 ven = 10
 #d = 
+
+def regr(x1,y1,x2,y2):
+  m = (y2-y1)/(x2-x1)
+  b = y2-(m*x2)
+  return m,b
 
 def pots_Callback(param):
     global pots_present
@@ -58,6 +48,27 @@ def pots_Callback(param):
       actual_J3 = pasados_J3/ven
       actual_J4 = pasados_J4/ven
       actual_J5 = pasados_J5/ven
+      
+      m0,b0 = regr(3369,0,3755,90)
+      actual_J0 = m0*actual_J0+b0
+      m1,b1 = regr(3210,0,2997,-90)
+      actual_J1 =  (m1*actual_J1)+b1+50
+      m2,b2 = regr(2254,0,2019,90)
+      actual_J2 = (m2*actual_J2)+b2
+      m3,b3 = regr(2008,0,2250,-90)
+      actual_J3 =  m3*actual_J3+b3
+      m4,b4 = regr(2188,0,2430,-90)
+      actual_J4 =  (m4*actual_J4)+b4
+      m5,b5 = regr(2640,90,2369,0)
+      actual_J5 =  (m5*actual_J5)+b5
+      
+
+      actual_J0 = round(((actual_J0*(3.1416))/180)-1.57,4)
+      actual_J1 = round((actual_J1*(3.1416))/180,4)
+      actual_J2 = round((actual_J2*(3.1416))/180,4)
+      actual_J3 = round(((actual_J3*(3.1416))/180)-3.1416,4)
+      actual_J4 = round(((actual_J4*(3.1416))/180),4)
+      actual_J5 = round((actual_J5*(3.1416))/180,4)
       pasados_J0 = 0.0
       pasados_J1 = 0.0
       pasados_J2 = 0.0
@@ -68,59 +79,21 @@ def pots_Callback(param):
     # print('pas0:',pasados_J0)
 
 
-def changeDir(j,v,n):
-    if j>n:
-        print('if')
-        v = -0.1
-    elif j<-n:
-        print('elif')
-        v = 0.1
-    else:
-        v = v
-    return v
-
-def moving_test():
-    j1 = round(j1+v1,1)
-    j2 = round(j2+v2,1)
-    j3 = round(j3+v3,1)
-    j4 = round(j4+v4,1)
-    j5 = round(j5+v5,1)
-    j6 = round(j6+v6,1)
-    v1 = changeDir(j1,v1,2)
-    v2 = changeDir(j2,v2,1.5)
-    v3 = changeDir(j3,v3,1.5)
-    v4 = changeDir(j4,v4,2.5)
-    v5 = changeDir(j5,v5,1.5)
-    v6 = changeDir(j6,v6,3)
-
 def move_arm():
-    global j0,j1,j2,j3,j4,j5,j6
-    global v0,v1,v2,v3,v4,v5,v6
     global pots_present
     global actual_J0,actual_J1,actual_J2,actual_J3,actual_J4,actual_J5
     rospy.init_node('joint_state_publisher')
     rospy.Subscriber ('topic_pots',pots,pots_Callback)
     pub = rospy.Publisher('joint_states', JointState, queue_size=10)
-    rate = rospy.Rate(10) # 10hz
-    print("Empezó")
+    rate = rospy.Rate(100) # 10hz
+    # print("Empezó")
     while not rospy.is_shutdown():
       hello_str = JointState()
       hello_str.header = Header()
       hello_str.header.stamp = rospy.Time.now()
       hello_str.name = ['robocol_joint1','robocol_joint2','robocol_joint3','robocol_joint4','robocol_joint5','robocol_joint6']
       #hello_str.position = [j1,j2,j3,j4,j5,j6]
-      actual_J0 = -0.2436*actual_J0+834.71
-      actual_J1 =  0.5*actual_J1-1735
-      actual_J2 = -0.3862*actual_J2+880.6866
-      actual_J3 =  -0.3585*actual_J3+729.9601
-      actual_J4 =  -0.3629*actual_J4+802.7419
-      actual_J5 =  0.3719*actual_J5-873.97
-      actual_J0 = round((actual_J0*(3.1416))/180,4)
-      actual_J1 = round((actual_J1*(3.1416))/180,4)
-      actual_J2 = round((actual_J2*(3.1416))/180,4)
-      actual_J3 = round((actual_J3*(3.1416))/180,4)
-      actual_J4 = round((actual_J4*(3.1416))/180,4)
-      actual_J5 = round((actual_J5*(3.1416))/180,4)
+      
       # print('J0: ',actual_J0)
       # print('J1: ',actual_J1)
       # print('J2: ',actual_J2)
@@ -128,16 +101,15 @@ def move_arm():
       # print('J4: ',actual_J4)
       # print('J5: ',actual_J5)
       # print(' ')
-      #hello_str.position = [actual_J0,actual_J1,actual_J2,actual_J3,2,actual_J5]
+      hello_str.position = [-0.931,-1.57,actual_J2,actual_J3,-actual_J4,actual_J5]
       #hello_str.position = [actual_J0,-1.57,actual_J2,actual_J3,actual_J4,actual_J5]
-      hello_str.position = [0.0,1.57,0.0,0.0,0.0,0.0]
+      #hello_str.position = [0.0,1.57,0.0,0.0,0.0,0.0]
       #hello_str.position = [actual_J0,actual_J1,actual_J2,actual_J3,j4,actual_J5]
       hello_str.velocity = [0,0,0,0,0,0]
       hello_str.effort = [0,0,0,0,0,0]
       # hello_str.header.stamp = rospy.Time.now()
       pub.publish(hello_str)
       rate.sleep()
-
 
 if __name__ == '__main__':
     try:

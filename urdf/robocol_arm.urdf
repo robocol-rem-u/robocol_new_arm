@@ -76,7 +76,7 @@
   </link>
 
   <joint name="robocol_joint4" type="revolute">
-    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="0.175" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="2.97" />
     <parent link="robocol_link3"/>
     <child link="robocol_link4"/>
     <!-- <origin xyz="-0.05 0.55 1.35175" rpy="0 0 -1.57" /> -->
@@ -103,7 +103,7 @@
     <child link="robocol_link5"/>
     <origin xyz="0.42 0.04 1.53" rpy="0 0 0" />
     <axis xyz="1 0 0" />
-    <limit effort="12" lower="-2.39" upper="1.75" velocity="2.8710" />
+    <limit effort="12" lower="-2.39" upper="2.7" velocity="2.8710" />
   </joint>
 
   <link name="robocol_link5">
