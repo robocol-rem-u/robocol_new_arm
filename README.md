@@ -1,7 +1,7 @@
 # Brazo_MoveIt
 Este repositorio contiene los archivos de MoveIt del brazo de Robocol.
 
-# Paquete requeridos
+# Paquetes requeridos
 Para usar este paquete se requiere tener instalado:
  - ROS Melodic.  
    La instalación de ROS Melodic para Ubuntu 18.04 se encuentra en el siguiente link:  
