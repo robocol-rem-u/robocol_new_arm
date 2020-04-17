@@ -18,3 +18,5 @@ http://docs.ros.org/melodic/api/moveit_tutorials/html/doc/getting_started/gettin
 ```console
 foo@bar:~$ roslaunch robocol_new_arm display.launch
 ```
+
+![Arm](images/Rest_pose_arm.JPG)
