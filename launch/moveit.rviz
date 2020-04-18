@@ -4,21 +4,23 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /MotionPlanning1/Scene Robot1
+        - /Global Options1
+        - /MotionPlanning1
         - /MotionPlanning1/Planning Request1
-        - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.5766738653182983
-    Tree Height: 362
+    Tree Height: 274
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
     Expanded:
       - /Current View1
-      - /Current View1/Focal Point1
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz_visual_tools/RvizVisualToolsGui
     Name: RvizVisualToolsGui
+  - Class: rviz_plugin_tutorials/Teleop
+    Name: Teleop
+    Topic: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -51,6 +53,24 @@ Visualization Manager:
       Namespaces:
         {}
       Queue Size: 100
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 170; 85; 0
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Ground
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: -3.2300000190734863
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
       Value: true
     - Acceleration_Scaling_Factor: 1
       Class: moveit_rviz_plugin/MotionPlanning
@@ -91,6 +111,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robocol_leftfinger:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           robocol_link0:
             Alpha: 1
             Show Axes: false
@@ -117,6 +142,15 @@ Visualization Manager:
             Show Trail: false
             Value: true
           robocol_link5:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robocol_link6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          robocol_rightfinger:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -144,8 +178,8 @@ Visualization Manager:
         Interactive Marker Size: 1.5
         Joint Violation Color: 255; 0; 255
         Planning Group: robocol_arm
-        Query Goal State: true
-        Query Start State: true
+        Query Goal State: false
+        Query Start State: false
         Show Workspace: false
         Start State Alpha: 1
         Start State Color: 0; 255; 0
@@ -167,6 +201,11 @@ Visualization Manager:
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
           robocol_hand:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robocol_leftfinger:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -201,29 +240,20 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robocol_link6:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          robocol_rightfinger:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 1
-    - Alpha: 0.5
-      Cell Size: 1
-      Class: rviz/Grid
-      Color: 170; 85; 0
-      Enabled: true
-      Line Style:
-        Line Width: 0.029999999329447746
-        Value: Lines
-      Name: Ground
-      Normal Cell Count: 0
-      Offset:
-        X: 0
-        Y: 0
-        Z: -3.2300000190734863
-      Plane: XY
-      Plane Cell Count: 10
-      Reference Frame: <Fixed Frame>
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -237,29 +267,47 @@ Visualization Manager:
     - Class: rviz/MoveCamera
     - Class: rviz/Select
     - Class: rviz_visual_tools/KeyTool
+    - Class: rviz/SetGoal
+      Topic: goal
+    - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
+      Topic: initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+    - Class: rviz/Measure
+    - Class: rviz_plugin_tutorials/PlantFlag
+      Flags:
+        - Name: Flag 0
+          X: 4.478667259216309
+          Y: -1.623046875
+          Z: 0
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+    - Class: rviz/FocusCamera
   Value: true
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 34.59637451171875
+      Distance: 24.759632110595703
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 3.552678108215332
-        Y: -4.084741115570068
-        Z: -2.999997854232788
-      Focal Shape Fixed Size: true
+        X: 0.8068456649780273
+        Y: -0.7503411769866943
+        Z: -1.1962629287154414e-6
+      Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2753984332084656
+      Pitch: 0.5253981351852417
       Target Frame: robocol_link0
       Value: ThirdPersonFollower (rviz)
-      Yaw: 2.3154008388519287
+      Yaw: 1.7703975439071655
     Saved: ~
 Window Geometry:
   Displays:
@@ -273,8 +321,10 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000001000000000000027400000393fc0200000011fb000000100044006900730070006c006100790073010000003b000001a5000000c700fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a00560069006500770073000000024500000189000000a000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000002e004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d00200053006c0069006400650072010000026f000000480000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001e6000001e80000018300fffffffb00000024005200760069007a00560069007300750061006c0054006f006f006c00730047007500690000000343000000a10000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000034f000001fb0000000000000000fb000000120020002d00200053006c006900640065007201000002df000000480000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000032d000001fb0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c0069006400650072000000036a0000007a0000003f00fffffffb0000003c005400720061006a006500630074006f007200790020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000023e000001a60000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000023c000001a60000000000000000fb0000000c00430061006d0065007200610000000318000000b60000000000000000000002860000039300000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000001000000000000027400000393fc0200000012fb000000100044006900730070006c006100790073010000003b0000014d000000c700fffffffb0000000800480065006c00700000000160000000bb0000006e00fffffffb0000000a00560069006500770073000000014300000102000000a000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000002e004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d00200053006c0069006400650072010000026f000000480000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000018e000002400000018300fffffffb00000024005200760069007a00560069007300750061006c0054006f006f006c0073004700750069000000032d000000a10000003f00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000034f000001fb0000000000000000fb000000120020002d00200053006c006900640065007201000002df000000480000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000032d000001fb0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c0069006400650072000000036a0000007a0000003f00fffffffb0000003c005400720061006a006500630074006f007200790020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000023e000001a60000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000023c000001a60000000000000000fb0000000c00430061006d0065007200610000000318000000b60000000000000000fb0000000c00540065006c0065006f0070000000031f000000af0000004500ffffff000002860000039300000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RvizVisualToolsGui:
+    collapsed: false
+  Teleop:
     collapsed: false
   Views:
     collapsed: false

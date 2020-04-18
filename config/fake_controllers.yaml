@@ -12,5 +12,7 @@ controller_list:
       - robocol_finger_joint1
       - robocol_finger_joint2
 initial:
-  - group: robocol_arm_hand
+  - group: robocol_arm
     pose: ready
+  - group: hand
+    pose: open
