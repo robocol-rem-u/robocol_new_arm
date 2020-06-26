@@ -16,7 +16,7 @@
       <joint name="robocol_joint3" value="2.62" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="1.19" />
-      <!-- <joint name="robocol_joint6" value="0" /> -->
+      <joint name="robocol_joint6" value="0" />
     </group_state>
     <group_state name="ready" group="robocol_arm">
       <joint name="robocol_joint1" value="0" />
@@ -24,7 +24,7 @@
       <joint name="robocol_joint3" value="1.57" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="-0.78" />
-      <!-- <joint name="robocol_joint6" value="1.57" /> -->
+      <joint name="robocol_joint6" value="1.57" />
     </group_state>
     <group_state name="pick" group="robocol_arm">
       <joint name="robocol_joint1" value="0" />
@@ -32,7 +32,7 @@
       <joint name="robocol_joint3" value="1.4" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="0" />
-      <!-- <joint name="robocol_joint6" value="1.57" /> -->
+      <joint name="robocol_joint6" value="1.57" />
     </group_state>
     <group_state name="place_right" group="robocol_arm">
       <joint name="robocol_joint1" value="-1.57" />
@@ -40,7 +40,7 @@
       <joint name="robocol_joint3" value="2.17" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="-0.95" />
-      <!-- <joint name="robocol_joint6" value="2.95" /> -->
+      <joint name="robocol_joint6" value="2.95" />
     </group_state>
     <group_state name="place_left" group="robocol_arm">
       <joint name="robocol_joint1" value="1.57" />
@@ -48,7 +48,7 @@
       <joint name="robocol_joint3" value="2.17" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="-0.95" />
-      <!-- <joint name="robocol_joint6" value="2.95" /> -->
+      <joint name="robocol_joint6" value="2.95" />
     </group_state>
     <group_state name="all_0" group="robocol_arm">
       <joint name="robocol_joint1" value="0" />
@@ -56,7 +56,7 @@
       <joint name="robocol_joint3" value="0" />
       <joint name="robocol_joint4" value="0" />
       <joint name="robocol_joint5" value="0" />
-      <!-- <joint name="robocol_joint6" value="0" /> -->
+      <joint name="robocol_joint6" value="0" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
@@ -67,6 +67,7 @@
     <disable_collisions link1="robocol_link2" link2="robocol_link3" reason="Adjacent" />
     <disable_collisions link1="robocol_link3" link2="robocol_link4" reason="Adjacent" />
     <disable_collisions link1="robocol_link4" link2="robocol_link5" reason="Adjacent" />
+    <disable_collisions link1="robocol_link5" link2="robocol_link6" reason="Adjacent" />
     <!-- <disable_collisions link1="robocol_link2" link2="robocol_link3" reason="Adjacent" /> -->
     
     <disable_collisions link1="robocol_link0" link2="robocol_link2" reason="Never" />
