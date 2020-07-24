@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rospy
-from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
+from sensor_msgs.msg import JointState
 from master_msgs.msg import traction_Orders,connection,arm_Orders,pots,arm_auto_status
 from moveit_msgs.msg import DisplayTrajectory
 #from moveit_msgs.msg import RobotTrajectory
@@ -192,7 +192,7 @@ def comprobar(t):
   print('TESTING CONDITIONS...')
   print('Trajectory #:',str(t))
   for i in range(0,6):
-    if i == 1:
+    if i == 0 or i == 1:
       cumple[i] = 1
       j += 1
     else:
