@@ -3,5 +3,5 @@
   <xacro:include filename="$(find robocol_new_arm)/arm_description/robocol_arm.xacro"/>
   <xacro:include filename="$(find robocol_new_arm)/arm_description/hand.xacro"/>
   <xacro:robocol_arm />
-  <xacro:hand ns="robocol" rpy="0 0 ${-pi/4}" connected_to="robocol_link5"/>
+  <xacro:hand ns="robocol" rpy="0 0 ${-pi/4}" connected_to="robocol_link6"/>
 </robot>

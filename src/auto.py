@@ -192,19 +192,20 @@ def comprobar(t):
   print('TESTING CONDITIONS...')
   print('Trajectory #:',str(t))
   for i in range(0,6):
-    if i == 0 or i == 1:
-      cumple[i] = 1
-      j += 1
+    if i == 8:
+      pass
+      # cumple[i] = 1
+      # j += 1
     else:
-      print('JOINT:',str(i+1))
-      print('Present:',joints[i])
-      print('Requested:',traj[t][i])
+      print(' JOINT:',str(i+1))
+      print('  Present:',joints[i])
+      print('  Requested:',traj[t][i])
       if joints[i] > traj[t][i]-r and joints[i] < traj[t][i]+r:
-        print('Joint',str(i+1),'arrived.')
+        print('  Joint',str(i+1),'arrived.')
         j = j+1
         cumple[i] = 1
       else:
-        print("JOINT",str(i+1),"HAS NOT ARRIVED.")
+        print("  JOINT",str(i+1),"HAS NOT ARRIVED.")
         cumple[i] = 0
   if j == 6:
     a = t+1
@@ -241,7 +242,7 @@ def auto_arm():
   # --- PUBLISHERS --- #
   pub_Arm_Orders = rospy.Publisher('topic_arm_orders',arm_Orders,queue_size=10)
   pub_Arm_Status = rospy.Publisher('topic_arm_status',arm_auto_status,queue_size=10)
-  rate = rospy.Rate(20) # 10hz
+  rate = rospy.Rate(0.5) # 10hz
   a = 0
   t = 0
   while not rospy.is_shutdown():
